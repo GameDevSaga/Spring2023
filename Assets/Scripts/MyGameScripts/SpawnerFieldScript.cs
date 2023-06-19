@@ -23,12 +23,12 @@ public class SpawnerFieldScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+ /*   private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Robot")
         {
             spawner.SetActive(false);
         }
     }
-
+ */
 }

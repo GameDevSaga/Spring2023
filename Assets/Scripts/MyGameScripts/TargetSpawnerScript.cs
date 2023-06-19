@@ -11,7 +11,7 @@ public class TargetSpawnerScript : MonoBehaviour
     void Start()
     {
         //Instantiate(enemy, transform.position, transform.rotation);
-        Invoke("Spawn", 2);
+        Invoke("Spawn", 0f);
     }
 
     // Update is called once per frame

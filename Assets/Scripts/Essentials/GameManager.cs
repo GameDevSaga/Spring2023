@@ -7,21 +7,22 @@ public class GameManager : MonoBehaviour
 {
     public int score = 0; // keeps track of your score
 
-    public static GameManager gameManager;
+    public static GameManager Instance;
+    private GameObject mainCharacter;
 
 
     void Start()
     {
-        if (gameManager == null)
+        if (Instance == null) //if there is no GM yet, make this object the GM
         {
             DontDestroyOnLoad(gameObject); // keeps the game object and its parameters along for the ride between game scenes
-            gameManager = this;
+            Instance = this;
         }
-        else if(gameManager != this)
+        else if(Instance != this) //if there already exists a GM, destroy this new one
         {
             Destroy(gameObject);
         }
-
+        mainCharacter = GameObject.Find("Robot");
 
     }
 
@@ -59,4 +60,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelToLoad);
     }*/
+    public void KillPlayer()
+    {
+        //print("You died");
+        Destroy(mainCharacter);
+    }
 }
