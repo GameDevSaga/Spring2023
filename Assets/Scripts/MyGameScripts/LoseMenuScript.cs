@@ -18,10 +18,6 @@ public class LoseMenuScript : MonoBehaviour
         
     }
 
-    public void LoseMenu()
-    {
-        loseMenu.SetActive(true);
-        Time.timeScale = 0f;
-    }
+
 
 }

@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement; // needed for being able to manage scenes
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0; // keeps track of your score
+    //public int score = 0; // keeps track of your score
 
     public static GameManager Instance;
-    private GameObject mainCharacter;
+    public GameObject mainCharacter;
+    public GameObject LoseScreen;
 
 
     void Start()
@@ -22,8 +23,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        mainCharacter = GameObject.Find("Robot");
-
+        //mainCharacter = GameObject.Find("Robot");
+        //LoseScreen = GameObject.Find("LoseMenu");
+        //LoseScreen.SetActive(false);
     }
 
     void Update()
@@ -31,12 +33,12 @@ public class GameManager : MonoBehaviour
         
     }
 
-    /*public void ChangeLevel()
+    public void ChangeLevel()
     {
-        StartCoroutine(LoadLevel(2));
-        //SceneManager.LoadScene("MainGame"); //starts up the main game scene, can also be called by number in build
+        //StartCoroutine(LoadLevel(2));
+        SceneManager.LoadScene("FirstLevel"); //starts up the main game scene, can also be called by number in build
     }
-
+    /*
     public void MenuLevel()
     {
         StartCoroutine(LoadLevel(0));
@@ -64,5 +66,6 @@ public class GameManager : MonoBehaviour
     {
         //print("You died");
         Destroy(mainCharacter);
+        LoseScreen.SetActive(true);
     }
 }

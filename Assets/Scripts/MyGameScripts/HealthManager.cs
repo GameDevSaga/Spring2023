@@ -11,13 +11,16 @@ public class HealthManager : MonoBehaviour
     public GameManager gm;
 
     public TextMeshProUGUI hpText;
-    public int hp;
+    //public int hp; What is this, not used anywhere?
 
     // Start is called before the first frame update
     void Start()
     {
-        //hpText.text = "HP " + healthAmount.ToString() + "/100";
+        hpText.text = "HP " + healthAmount.ToString() + "/100";
         gm = GameManager.Instance;
+        gm.mainCharacter = GameObject.Find("Robot");
+        gm.LoseScreen = GameObject.Find("LoseMenu");
+        gm.LoseScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +29,7 @@ public class HealthManager : MonoBehaviour
         if (healthAmount <= 0)
         {
             // Application.LoadLevel(Application.loadedLevel); outdated?
-            //print("Game Over");
+            print("Game Over");
             StartCoroutine(HitStop());
 
         }
@@ -62,8 +65,6 @@ public class HealthManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(1f);
-        Time.timeScale = 1f;
-
         gm.KillPlayer();
     }
 

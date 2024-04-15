@@ -48,7 +48,9 @@ public class MainMenuScript : MonoBehaviour
 
     public IEnumerator LoadLevel(int levelToLoad)
     {
+        Time.timeScale = 1f;
         fadeScreen.SetTrigger("FadeOut");
+        
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelToLoad);
     }
